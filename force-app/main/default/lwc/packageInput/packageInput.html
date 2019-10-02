@@ -1,0 +1,21 @@
+<template>
+    <div class="slds-form-element slds-form_compound">
+        <fieldset class="slds-form-element">
+            <legend class="slds-form-element__legend slds-form-element__label">{label}</legend>
+            <div class="slds-form-element__control">
+                <lightning-layout>
+                    <lightning-layout-item size="6" padding="around-small">
+                        <c-dimension-input disabled={disabled} readonly={readonly}
+                            ondimensionchange={handleDimensionChange}>
+                        </c-dimension-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6" padding="around-small">
+                        <c-weight-input disabled={disabled} readonly={readonly}
+                            onweightchange={handleWeightChange}>
+                        </c-weight-input>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </fieldset>
+    </div>
+</template>

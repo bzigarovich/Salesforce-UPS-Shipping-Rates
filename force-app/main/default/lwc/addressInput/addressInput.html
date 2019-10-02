@@ -1,0 +1,79 @@
+<template>
+    <div class="slds-form-element slds-form_compound">
+        <fieldset class="slds-form-element">
+            <legend class="slds-form-element__legend slds-form-element__label">{label}</legend>
+            <div class="slds-form-element__control">
+                <div class="slds-form-element__group">
+                    <div class="slds-form-element__row">
+                        <lightning-input type="text" name="attention"
+                            class="slds-form-element slds-show slds-size_6-of-6"
+                            label={uiLabels.attention}
+                            disabled={disabled}
+                            readonly={readonly}
+                            max-length="35"
+                            value={_attention}
+                            onchange={handleChange}
+                            required>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-form-element__row">
+                        <lightning-textarea type="text" name="street"
+                            class="slds-form-element slds-show slds-size_6-of-6"
+                            label={uiLabels.street}
+                            disabled={disabled}
+                            readonly={readonly}
+                            value={_street}
+                            onchange={handleChange}>
+                        </lightning-textarea>
+                    </div>
+                    <div class="slds-form-element__row">
+                        <lightning-input type="text" name="city"
+                            class="slds-form-element slds-show slds-size_4-of-6"
+                            label={uiLabels.city}
+                            max-length="30"
+                            disabled={disabled}
+                            readonly={readonly}
+                            value={_city}
+                            onchange={handleChange}>
+                        </lightning-input>
+                        <lightning-combobox name="stateCode"
+                            class="slds-form-element slds-show slds-size_2-of-6"
+                            label={uiLabels.state}
+                            placeholder={uiLabels.selectState}
+                            disabled={disabled}
+                            readonly={readonly}
+                            options={states}
+                            value={_stateCode}
+                            onchange={handleChange}
+                            required>
+                        </lightning-combobox>
+                    </div>
+                    <div class="slds-form-element__row">
+                        <lightning-input type="text" name="postalCode"
+                            class="slds-form-element slds-show slds-size_4-of-6"
+                            label={uiLabels.postalCode}
+                            max-length="10"
+                            disabled={disabled}
+                            readonly={readonly}
+                            value={_postalCode}
+                            pattern="[0-9]{5}|[0-9]{9}|[0-9]{5}-[0-9]{4}"
+                            onchange={handleChange}
+                            required>
+                        </lightning-input>
+                        <lightning-combobox name="countryCode"
+                            class="slds-form-element slds-show slds-size_2-of-6"
+                            label={uiLabels.country}
+                            disabled
+                            readonly={readonly}
+                            placeholder={uiLabels.selectCountry}
+                            options={countries}
+                            value={_countryCode}
+                            onchange={handleChange}
+                            required>
+                        </lightning-combobox>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</template>

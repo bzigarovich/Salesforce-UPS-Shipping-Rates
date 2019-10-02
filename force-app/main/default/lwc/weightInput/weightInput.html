@@ -1,0 +1,36 @@
+<template>
+    <div class="slds-form-element slds-form_compound">
+        <fieldset class="slds-form-element">
+            <legend class="slds-form-element__legend slds-form-element__label">{label}</legend>
+            <div class="slds-form-element__control">
+                <div class="slds-form-element__group">
+                    <div class="slds-form-element__row">
+                        <lightning-input type="text" name="weight"
+                            class="slds-form-element slds-show slds-size_6-of-6"
+                            label={uiLabels.weight}
+                            disabled={disabled}
+                            readonly={readonly}
+                            min="0.1"
+                            value={_weight}
+                            onchange={handleChange}
+                            required>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-form-element__row">
+                        <lightning-combobox name="units"
+                            class="slds-form-element slds-show slds-size_6-of-6"
+                            label={uiLabels.units}
+                            disabled
+                            readonly={readonly}
+                            placeholder={uiLabels.selectUnits}
+                            options={units}
+                            value={_units}
+                            onchange={handleChange}
+                            required>
+                        </lightning-combobox>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</template>

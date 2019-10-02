@@ -1,0 +1,35 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "c/weightInput": [
+                "weightInput/weightInput.js"
+            ],
+            "c/shippingRatesAPI": [
+                "shippingRatesAPI/shippingRatesAPI.js"
+            ],
+            "c/addressInput": [
+                "addressInput/addressInput.js"
+            ],
+            "c/packageInput": [
+                "packageInput/packageInput.js"
+            ],
+            "c/dimensionInput": [
+                "dimensionInput/dimensionInput.js"
+            ],
+            "c/ratesTable": [
+                "ratesTable/ratesTable.js"
+            ]
+        }
+    },
+    "include": [
+        "**/*",
+        "../../../../.sfdx/typings/lwc/**/*.d.ts"
+    ],
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    }
+}

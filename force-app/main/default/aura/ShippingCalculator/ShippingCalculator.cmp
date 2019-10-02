@@ -1,0 +1,52 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <!-- Attributes -->
+    <aura:attribute name="fromAddress" type="RateRequest.Address" description="Origin shipping address." />
+    <aura:attribute name="toAddress" type="RateRequest.Address" description="Destination shipping address." />
+    <aura:attribute name="package" type="RateRequest.PackageInfo" description="Package information." />
+    <aura:attribute name="rateInfo" type="RateInfo[]" description="Rate information." />
+    <aura:attribute name="provider" type="String" default="UPS" description="Shipping provider." />
+    <aura:attribute name="isLoading" type="Boolean" default="false" description="Loading flag." />
+
+    <!-- Shipping Rates API -->
+    <c:shippingRatesAPI aura:id="shipAPI" />
+
+    <lightning:card title="{! $Label.c.UI_Shipping_Calculator }">
+        <aura:set attribute="footer">
+            <div class="slds-clearfix">
+                <div class="slds-float_right">
+                    <lightning:button label="{! $Label.c.UI_Get_Rates }" variant="brand" onclick="{! c.handleGetRates }" />
+                </div>
+            </div>
+        </aura:set>
+        <div onkeydown="{! c.handleKeyDown }">
+            <!-- Show spinner if loading -->
+            <aura:if isTrue="{! v.isLoading }">
+                <lightning:spinner alternativeText="Loading" size="medium" />
+            </aura:if>
+
+            <p class="slds-p-around_small">
+                <div class="slds-p-around_x-small">
+                    <c:addressInput aura:id="from" label="{! $Label.c.UI_From_Address }" onaddresschange="{! c.handleFromAddressChange }" />
+                </div>
+                <div class="slds-p-around_x-small">
+                    <c:addressInput aura:id="to" label="{! $Label.c.UI_To_Address }" onaddresschange="{! c.handleToAddressChange }" />
+                </div>
+                <div class="slds-p-around_x-small">
+                    <c:packageInput aura:id="package" onpackagechange="{! c.handlePackageChange }" />
+                </div>
+            </p>
+    
+            <!-- Show Results -->
+            <aura:if isTrue="{! !empty(v.rateInfo) }">
+                <p class="slds-p-around_small">
+                    <fieldset class="slds-form-element slds-form-element_compound">
+                        <legend class="slds-form-element__legend slds-form-element__label">{! $Label.c.UI_Results }</legend>
+                        <div class="slds-form-element__control">
+                            <c:ratesTable rateInfo="{! v.rateInfo }" />
+                        </div>
+                    </fieldset>
+                </p>
+            </aura:if>
+        </div>
+    </lightning:card>
+</aura:component>
